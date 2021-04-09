@@ -1,9 +1,10 @@
-package com.adedom.tictactoe
+package com.adedom.tictactoe.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.adedom.tictactoe.R
+import com.adedom.tictactoe.base.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
