@@ -2,4 +2,7 @@
     <string name="app_name">TicTacToe</string>
     <string name="tic_tac_toe">Tic tac toe</string>
     <string name="game">Game</string>
+    <string name="restart_game">RESTART GAME</string>
+    <string name="turn_game">%1$s Turn</string>
+    <string name="turn_game_initial">Start game or select player</string>
 </resources>

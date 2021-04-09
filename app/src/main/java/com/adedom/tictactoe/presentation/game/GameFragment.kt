@@ -14,7 +14,12 @@ class GameFragment : BaseFragment(R.layout.fragment_game) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tvGame.text = args.modeId.toString()
+        setupView()
+    }
+
+    private fun setupView() {
+        tvGameMode.text = args.gameMode.modeName
+        tvTurnGame.text = getString(R.string.turn_game_initial)
     }
 
 }

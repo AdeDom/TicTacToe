@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.item_main.view.*
 
 class MainAdapter : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
-    private var onClickListener: ((Int) -> Unit)? = null
+    private var onClickListener: ((GameMode) -> Unit)? = null
 
     private val diffUtil = object : DiffUtil.ItemCallback<GameMode>() {
         override fun areItemsTheSame(oldItem: GameMode, newItem: GameMode): Boolean {
@@ -41,7 +41,7 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
             tvMode.text = item.modeName
 
             setOnClickListener {
-                onClickListener?.invoke(item.modeId)
+                onClickListener?.invoke(item)
             }
         }
     }
@@ -50,7 +50,7 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     fun submitList(list: List<GameMode>) = asyncListDiffer.submitList(list)
 
-    fun setOnClickListener(onClickListener: (Int) -> Unit) {
+    fun setOnClickListener(onClickListener: (GameMode) -> Unit) {
         this.onClickListener = onClickListener
     }
 
