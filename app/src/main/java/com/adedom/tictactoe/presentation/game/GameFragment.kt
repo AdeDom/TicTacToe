@@ -2,6 +2,7 @@ package com.adedom.tictactoe.presentation.game
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.material.Text
 import androidx.navigation.fragment.navArgs
 import com.adedom.tictactoe.R
 import com.adedom.tictactoe.base.BaseFragment
@@ -20,6 +21,9 @@ class GameFragment : BaseFragment(R.layout.fragment_game) {
     private fun setupView() {
         tvGameMode.text = args.gameMode.modeName
         tvTurnGame.text = getString(R.string.turn_game_initial)
+        compose_view.setContent {
+            Text("Hello Compose!")
+        }
     }
 
 }
