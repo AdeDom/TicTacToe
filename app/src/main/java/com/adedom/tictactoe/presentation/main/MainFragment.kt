@@ -41,10 +41,6 @@ class MainFragment : BaseFragment(R.layout.fragment_main) {
             GameMode(1, "3 x 3", 3),
             GameMode(2, "4 x 4", 4),
             GameMode(3, "5 x 5", 5),
-            GameMode(4, "6 x 6", 6),
-            GameMode(5, "7 x 7", 7),
-            GameMode(6, "8 x 8", 8),
-            GameMode(7, "9 x 9", 9),
         )
     }
 
