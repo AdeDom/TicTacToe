@@ -5,4 +5,5 @@
     <string name="restart_game">RESTART GAME</string>
     <string name="turn_game">%1$s Turn</string>
     <string name="turn_game_initial">Start game or select player</string>
+    <string name="game_over">Game Over</string>
 </resources>

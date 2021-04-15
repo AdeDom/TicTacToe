@@ -7,7 +7,7 @@ val domainModule = module {
 
     single<SaveTicTacToeUseCase> { SaveTicTacToeUseCaseImpl(get()) }
     single<DeleteTicTacToeUseCase> { DeleteTicTacToeUseCaseImpl(get()) }
-    single<GetTurnGameLastUseCase> { GetTurnGameLastUseCaseImpl(get()) }
     single<GetTicTacToeUseCase> { GetTicTacToeUseCaseImpl(get()) }
+    single<CheckGameOverUseCase> { CheckGameOverUseCaseImpl(get()) }
 
 }

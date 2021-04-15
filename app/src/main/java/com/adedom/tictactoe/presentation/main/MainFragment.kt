@@ -8,10 +8,18 @@ import com.adedom.tictactoe.R
 import com.adedom.tictactoe.base.BaseFragment
 import com.adedom.tictactoe.presentation.model.GameMode
 import kotlinx.android.synthetic.main.fragment_main.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : BaseFragment(R.layout.fragment_main) {
 
+    private val viewModel by viewModel<MainViewModel>()
     private val mAdapter by lazy { MainAdapter() }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        viewModel.deleteTicTacToe()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

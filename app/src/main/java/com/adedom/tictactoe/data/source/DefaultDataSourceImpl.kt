@@ -16,10 +16,6 @@ class DefaultDataSourceImpl(
         return db.getTicTacToeDao().getTurnGameLast()
     }
 
-    override fun getTurnGameLastFlow(): Flow<String?> {
-        return db.getTicTacToeDao().getTurnGameLastFlow()
-    }
-
     override fun getTicTacToeFlow(): Flow<List<TicTacToeEntity>> {
         return db.getTicTacToeDao().getTicTacToeFlow()
     }

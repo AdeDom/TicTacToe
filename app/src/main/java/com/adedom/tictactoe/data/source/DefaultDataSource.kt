@@ -9,8 +9,6 @@ interface DefaultDataSource {
 
     suspend fun getTurnGameLast(): String?
 
-    fun getTurnGameLastFlow(): Flow<String?>
-
     fun getTicTacToeFlow(): Flow<List<TicTacToeEntity>>
 
     suspend fun deleteTicTacToe()

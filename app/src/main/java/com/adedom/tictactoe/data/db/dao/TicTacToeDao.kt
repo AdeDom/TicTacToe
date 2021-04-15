@@ -16,9 +16,6 @@ interface TicTacToeDao {
     @Query("SELECT turnGame FROM tic_tac_toe ORDER BY timeMillis DESC LIMIT 1")
     suspend fun getTurnGameLast(): String?
 
-    @Query("SELECT turnGame FROM tic_tac_toe ORDER BY timeMillis DESC LIMIT 1")
-    fun getTurnGameLastFlow(): Flow<String?>
-
     @Query("SELECT * FROM tic_tac_toe ORDER BY `column` ASC, `row` ASC")
     fun getTicTacToeFlow(): Flow<List<TicTacToeEntity>>
 

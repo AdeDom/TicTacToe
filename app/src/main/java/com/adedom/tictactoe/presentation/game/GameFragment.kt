@@ -35,7 +35,7 @@ class GameFragment : BaseFragment(R.layout.fragment_game) {
 
     private fun setupView() {
         tvGameMode.text = args.gameMode.modeName
-        tvTurnGame.text = getString(R.string.turn_game_initial)
+        tvGameMessage.text = getString(R.string.turn_game_initial)
         compose_view.setContent {
             BoardGame(args.gameMode.size, viewModel)
         }
@@ -45,9 +45,13 @@ class GameFragment : BaseFragment(R.layout.fragment_game) {
     }
 
     private fun observeViewModel() {
-        viewModel.getTurnGameLast.observe {
-            it?.let { turnGameLast ->
-                tvTurnGame.text = getString(R.string.turn_game, turnGameLast)
+        viewModel.checkGameOver(args.gameMode.size).observe { checkGameOver ->
+            if (checkGameOver.isGameOver) {
+                tvGameMessage.text = getString(R.string.game_over)
+            } else {
+                checkGameOver.turnGame?.let {
+                    tvGameMessage.text = getString(R.string.turn_game, it)
+                }
             }
         }
     }

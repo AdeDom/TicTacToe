@@ -16,10 +16,6 @@ class DefaultRepositoryImpl(
         return dataSource.getTurnGameLast()
     }
 
-    override fun getTurnGameLastFlow(): Flow<String?> {
-        return dataSource.getTurnGameLastFlow()
-    }
-
     override fun getTicTacToeFlow(): Flow<List<TicTacToeEntity>> {
         return dataSource.getTicTacToeFlow()
     }
