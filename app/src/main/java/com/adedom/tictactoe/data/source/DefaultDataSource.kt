@@ -1,12 +1,17 @@
 package com.adedom.tictactoe.data.source
 
 import com.adedom.tictactoe.data.db.entities.TicTacToeEntity
+import kotlinx.coroutines.flow.Flow
 
 interface DefaultDataSource {
 
     suspend fun saveTicTacToe(ticTacToeEntity: TicTacToeEntity)
 
     suspend fun getTurnGameLast(): String?
+
+    fun getTurnGameLastFlow(): Flow<String?>
+
+    fun getTicTacToeFlow(): Flow<List<TicTacToeEntity>>
 
     suspend fun deleteTicTacToe()
 

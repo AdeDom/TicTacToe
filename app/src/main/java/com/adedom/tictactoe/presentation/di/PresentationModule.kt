@@ -6,6 +6,6 @@ import org.koin.dsl.module
 
 val presentationModule = module {
 
-    viewModel { GameViewModel(get(), get()) }
+    viewModel { GameViewModel(get(), get(), get(), get()) }
 
 }
