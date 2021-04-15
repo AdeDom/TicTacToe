@@ -21,6 +21,10 @@ class DefaultDataSourceImpl(
         return db.getTicTacToeDao().getTicTacToeFlow()
     }
 
+    override suspend fun deleteTicTacToeLast() {
+        return db.getTicTacToeDao().deleteTicTacToeLast()
+    }
+
     override suspend fun deleteTicTacToe() {
         return db.getTicTacToeDao().deleteTicTacToe()
     }

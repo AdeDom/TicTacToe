@@ -19,6 +19,9 @@ interface TicTacToeDao {
     @Query("SELECT * FROM tic_tac_toe ORDER BY `column` ASC, `row` ASC")
     fun getTicTacToeFlow(): Flow<List<TicTacToeEntity>>
 
+    @Query("DELETE FROM tic_tac_toe WHERE timeMillis = (SELECT timeMillis FROM tic_tac_toe ORDER BY timeMillis DESC LIMIT 1)")
+    suspend fun deleteTicTacToeLast()
+
     @Query("DELETE FROM tic_tac_toe")
     suspend fun deleteTicTacToe()
 

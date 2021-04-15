@@ -17,6 +17,7 @@ class GameViewModel(
     private val getWinnerGamePlayerXUseCase: GetWinnerGamePlayerXUseCase,
     private val getWinnerGamePlayerOUseCase: GetWinnerGamePlayerOUseCase,
     private val deleteWinnerGameUseCase: DeleteWinnerGameUseCase,
+    private val deleteTicTacToeLastUseCase: DeleteTicTacToeLastUseCase,
 ) : BaseViewModel() {
 
     val getTicTacToe: LiveData<List<TicTacToeEntity>> = getTicTacToeUseCase().asLiveData()
@@ -49,6 +50,12 @@ class GameViewModel(
     fun saveWinnerGame(winnerPlayer: String) {
         launch {
             saveWinnerGameUseCase(winnerPlayer)
+        }
+    }
+
+    fun deleteTicTacToeLast(){
+        launch {
+            deleteTicTacToeLastUseCase()
         }
     }
 

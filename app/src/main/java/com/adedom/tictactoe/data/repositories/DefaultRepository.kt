@@ -12,6 +12,8 @@ interface DefaultRepository {
 
     fun getTicTacToeFlow(): Flow<List<TicTacToeEntity>>
 
+    suspend fun deleteTicTacToeLast()
+
     suspend fun deleteTicTacToe()
 
     suspend fun saveWinnerGame(winnerGameEntity: WinnerGameEntity)

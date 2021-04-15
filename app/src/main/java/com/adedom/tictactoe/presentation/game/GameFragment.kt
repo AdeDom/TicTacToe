@@ -44,6 +44,9 @@ class GameFragment : BaseFragment(R.layout.fragment_game) {
         btRestartGame.setOnClickListener {
             viewModel.deleteTicTacToe()
         }
+        ibReplay.setOnClickListener {
+            viewModel.deleteTicTacToeLast()
+        }
     }
 
     private fun observeViewModel() {
@@ -51,17 +54,21 @@ class GameFragment : BaseFragment(R.layout.fragment_game) {
             when (checkGameOver.gameOver) {
                 is CheckGameOver.GameState.Initial -> {
                     tvGameMessage.text = if (checkGameOver.turnGame == null) {
+                        ibReplay.isClickable = false
                         getString(R.string.turn_game_initial)
                     } else {
+                        ibReplay.isClickable = true
                         getString(R.string.turn_game, checkGameOver.turnGame)
                     }
                 }
                 is CheckGameOver.GameState.End -> {
                     tvGameMessage.text = getString(R.string.game_over)
                     viewModel.saveWinnerGame(checkGameOver.winnerPlayer)
+                    ibReplay.isClickable = false
                 }
                 is CheckGameOver.GameState.Draw -> {
                     tvGameMessage.text = getString(R.string.game_over)
+                    ibReplay.isClickable = false
                 }
             }
         }

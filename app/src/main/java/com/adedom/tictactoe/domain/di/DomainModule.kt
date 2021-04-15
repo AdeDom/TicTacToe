@@ -13,5 +13,6 @@ val domainModule = module {
     single<GetWinnerGamePlayerXUseCase> { GetWinnerGamePlayerXUseCaseImpl(get()) }
     single<GetWinnerGamePlayerOUseCase> { GetWinnerGamePlayerOUseCaseImpl(get()) }
     single<DeleteWinnerGameUseCase> { DeleteWinnerGameUseCaseImpl(get()) }
+    single<DeleteTicTacToeLastUseCase> { DeleteTicTacToeLastUseCaseImpl(get()) }
 
 }

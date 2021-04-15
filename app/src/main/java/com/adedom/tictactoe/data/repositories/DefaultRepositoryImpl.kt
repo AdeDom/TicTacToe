@@ -21,6 +21,10 @@ class DefaultRepositoryImpl(
         return dataSource.getTicTacToeFlow()
     }
 
+    override suspend fun deleteTicTacToeLast() {
+        return dataSource.deleteTicTacToeLast()
+    }
+
     override suspend fun deleteTicTacToe() {
         return dataSource.deleteTicTacToe()
     }
