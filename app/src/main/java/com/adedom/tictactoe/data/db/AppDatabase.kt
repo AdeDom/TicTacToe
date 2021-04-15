@@ -5,15 +5,19 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.adedom.tictactoe.data.db.dao.TicTacToeDao
+import com.adedom.tictactoe.data.db.dao.WinnerGameDao
 import com.adedom.tictactoe.data.db.entities.TicTacToeEntity
+import com.adedom.tictactoe.data.db.entities.WinnerGameEntity
 
 @Database(
-    entities = [TicTacToeEntity::class],
-    version = 1
+    entities = [TicTacToeEntity::class, WinnerGameEntity::class],
+    version = 2
 )
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun getTicTacToeDao(): TicTacToeDao
+
+    abstract fun getWinnerGameDao(): WinnerGameDao
 
     companion object {
         @Volatile

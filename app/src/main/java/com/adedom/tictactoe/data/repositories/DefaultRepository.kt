@@ -1,6 +1,7 @@
 package com.adedom.tictactoe.data.repositories
 
 import com.adedom.tictactoe.data.db.entities.TicTacToeEntity
+import com.adedom.tictactoe.data.db.entities.WinnerGameEntity
 import kotlinx.coroutines.flow.Flow
 
 interface DefaultRepository {
@@ -12,5 +13,11 @@ interface DefaultRepository {
     fun getTicTacToeFlow(): Flow<List<TicTacToeEntity>>
 
     suspend fun deleteTicTacToe()
+
+    suspend fun saveWinnerGame(winnerGameEntity: WinnerGameEntity)
+
+    fun getWinnerGameFlow(): Flow<List<WinnerGameEntity>>
+
+    suspend fun deleteWinnerGame()
 
 }

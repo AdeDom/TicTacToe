@@ -1,6 +1,7 @@
 package com.adedom.tictactoe.data.repositories
 
 import com.adedom.tictactoe.data.db.entities.TicTacToeEntity
+import com.adedom.tictactoe.data.db.entities.WinnerGameEntity
 import com.adedom.tictactoe.data.source.DefaultDataSource
 import kotlinx.coroutines.flow.Flow
 
@@ -22,6 +23,18 @@ class DefaultRepositoryImpl(
 
     override suspend fun deleteTicTacToe() {
         return dataSource.deleteTicTacToe()
+    }
+
+    override suspend fun saveWinnerGame(winnerGameEntity: WinnerGameEntity) {
+        return dataSource.saveWinnerGame(winnerGameEntity)
+    }
+
+    override fun getWinnerGameFlow(): Flow<List<WinnerGameEntity>> {
+        return dataSource.getWinnerGameFlow()
+    }
+
+    override suspend fun deleteWinnerGame() {
+        return dataSource.deleteWinnerGame()
     }
 
 }

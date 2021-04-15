@@ -58,11 +58,20 @@ class GameFragment : BaseFragment(R.layout.fragment_game) {
                 }
                 is CheckGameOver.GameState.End -> {
                     tvGameMessage.text = getString(R.string.game_over)
+                    viewModel.saveWinnerGame(checkGameOver.winnerPlayer)
                 }
                 is CheckGameOver.GameState.Draw -> {
                     tvGameMessage.text = getString(R.string.game_over)
                 }
             }
+        }
+
+        viewModel.getWinnerGamePlayerX.observe {
+            tvScoreX.text = it.toString()
+        }
+
+        viewModel.getWinnerGamePlayerO.observe {
+            tvScoreO.text = it.toString()
         }
     }
 

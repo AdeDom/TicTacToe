@@ -13,12 +13,21 @@ class GameViewModel(
     private val getTicTacToeUseCase: GetTicTacToeUseCase,
     private val deleteTicTacToeUseCase: DeleteTicTacToeUseCase,
     private val checkGameOverUseCase: CheckGameOverUseCase,
+    private val saveWinnerGameUseCase: SaveWinnerGameUseCase,
+    private val getWinnerGamePlayerXUseCase: GetWinnerGamePlayerXUseCase,
+    private val getWinnerGamePlayerOUseCase: GetWinnerGamePlayerOUseCase,
+    private val deleteWinnerGameUseCase: DeleteWinnerGameUseCase,
 ) : BaseViewModel() {
 
     val getTicTacToe: LiveData<List<TicTacToeEntity>> = getTicTacToeUseCase().asLiveData()
+    val getWinnerGamePlayerX: LiveData<Int> = getWinnerGamePlayerXUseCase().asLiveData()
+    val getWinnerGamePlayerO: LiveData<Int> = getWinnerGamePlayerOUseCase().asLiveData()
 
     init {
-        deleteTicTacToe()
+        launch {
+            deleteTicTacToeUseCase()
+            deleteWinnerGameUseCase()
+        }
     }
 
     fun saveTicTacToe(column: Int, row: Int) {
@@ -35,6 +44,12 @@ class GameViewModel(
 
     fun checkGameOver(size: Int): LiveData<CheckGameOver> {
         return checkGameOverUseCase(size).asLiveData()
+    }
+
+    fun saveWinnerGame(winnerPlayer: String) {
+        launch {
+            saveWinnerGameUseCase(winnerPlayer)
+        }
     }
 
 }
