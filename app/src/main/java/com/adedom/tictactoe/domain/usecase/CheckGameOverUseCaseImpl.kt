@@ -10,7 +10,7 @@ class CheckGameOverUseCaseImpl(
 ) : CheckGameOverUseCase {
     override fun invoke(size: Int): Flow<CheckGameOver> {
         return repository.getTicTacToeFlow().map { tictactoes ->
-            var checkGameOver = CheckGameOver("", false)
+            var checkGameOver = CheckGameOver("", CheckGameOver.GameState.Initial)
 
             var obliqueX1 = 0
             var obliqueX2 = 0
@@ -32,15 +32,35 @@ class CheckGameOverUseCaseImpl(
                     tictactoes.filter { it.turnGame == "O" && it.row == (size - index) - 1 && it.column == index }.size
 
                 when {
-                    rowX.size == size -> checkGameOver = CheckGameOver("X", true)
-                    rowO.size == size -> checkGameOver = CheckGameOver("O", true)
-                    columnX.size == size -> checkGameOver = CheckGameOver("X", true)
-                    columnO.size == size -> checkGameOver = CheckGameOver("O", true)
-                    obliqueX1 == size -> checkGameOver = CheckGameOver("X", true)
-                    obliqueX2 == size -> checkGameOver = CheckGameOver("X", true)
-                    obliqueO1 == size -> checkGameOver = CheckGameOver("O", true)
-                    obliqueO2 == size -> checkGameOver = CheckGameOver("O", true)
+                    rowX.size == size -> {
+                        checkGameOver = CheckGameOver("X", CheckGameOver.GameState.End)
+                    }
+                    rowO.size == size -> {
+                        checkGameOver = CheckGameOver("O", CheckGameOver.GameState.End)
+                    }
+                    columnX.size == size -> {
+                        checkGameOver = CheckGameOver("X", CheckGameOver.GameState.End)
+                    }
+                    columnO.size == size -> {
+                        checkGameOver = CheckGameOver("O", CheckGameOver.GameState.End)
+                    }
+                    obliqueX1 == size -> {
+                        checkGameOver = CheckGameOver("X", CheckGameOver.GameState.End)
+                    }
+                    obliqueX2 == size -> {
+                        checkGameOver = CheckGameOver("X", CheckGameOver.GameState.End)
+                    }
+                    obliqueO1 == size -> {
+                        checkGameOver = CheckGameOver("O", CheckGameOver.GameState.End)
+                    }
+                    obliqueO2 == size -> {
+                        checkGameOver = CheckGameOver("O", CheckGameOver.GameState.End)
+                    }
                 }
+            }
+
+            if ((size * size) == tictactoes.size) {
+                checkGameOver = CheckGameOver("", CheckGameOver.GameState.Draw)
             }
 
             var turnGame = tictactoes.lastOrNull()?.turnGame

@@ -6,4 +6,6 @@
     <string name="turn_game">%1$s Turn</string>
     <string name="turn_game_initial">Start game or select player</string>
     <string name="game_over">Game Over</string>
+    <string name="winner">WINNER!</string>
+    <string name="draw">DRAW!</string>
 </resources>
