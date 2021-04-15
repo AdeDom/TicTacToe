@@ -3,6 +3,7 @@ package com.adedom.tictactoe.presentation.main
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.adedom.tictactoe.R
 import com.adedom.tictactoe.base.BaseFragment
@@ -13,6 +14,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainFragment : BaseFragment(R.layout.fragment_main) {
 
     private val viewModel by viewModel<MainViewModel>()
+    private val mHeaderAdapter by lazy { HeaderAdapter() }
     private val mAdapter by lazy { MainAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,9 +31,14 @@ class MainFragment : BaseFragment(R.layout.fragment_main) {
     }
 
     private fun setupView() {
+        val adt = ConcatAdapter(
+            mHeaderAdapter,
+            mAdapter,
+        )
+
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = mAdapter
+            adapter = adt
         }
 
         mAdapter.submitList(getAllMode())
