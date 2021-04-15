@@ -8,10 +8,13 @@ class SaveTicTacToeUseCaseImpl(
 ) : SaveTicTacToeUseCase {
 
     override suspend fun invoke(column: Int, row: Int) {
+        val turnGameLast = repository.getTurnGameLast() ?: "O"
+        val turnGame = if (turnGameLast == "O") "X" else "O"
         val ticTacToeEntity = TicTacToeEntity(
             column = column,
             row = row,
-            turnGame = "XXX"
+            turnGame = turnGame,
+            timeMillis = System.currentTimeMillis(),
         )
         return repository.saveTicTacToe(ticTacToeEntity)
     }

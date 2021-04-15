@@ -8,6 +8,7 @@ data class TicTacToeEntity(
     val column: Int,
     val row: Int,
     val turnGame: String,
+    val timeMillis: Long,
 ) {
     @PrimaryKey(autoGenerate = true)
     var id = 0

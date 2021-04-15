@@ -11,4 +11,12 @@ class DefaultDataSourceImpl(
         return db.getTicTacToeDao().saveTicTacToe(ticTacToeEntity)
     }
 
+    override suspend fun getTurnGameLast(): String? {
+        return db.getTicTacToeDao().getTurnGameLast()
+    }
+
+    override suspend fun deleteTicTacToe() {
+        return db.getTicTacToeDao().deleteTicTacToe()
+    }
+
 }

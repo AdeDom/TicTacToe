@@ -6,4 +6,8 @@ interface DefaultRepository {
 
     suspend fun saveTicTacToe(ticTacToeEntity: TicTacToeEntity)
 
+    suspend fun getTurnGameLast(): String?
+
+    suspend fun deleteTicTacToe()
+
 }

@@ -11,4 +11,12 @@ class DefaultRepositoryImpl(
         return dataSource.saveTicTacToe(ticTacToeEntity)
     }
 
+    override suspend fun getTurnGameLast(): String? {
+        return dataSource.getTurnGameLast()
+    }
+
+    override suspend fun deleteTicTacToe() {
+        return dataSource.deleteTicTacToe()
+    }
+
 }
