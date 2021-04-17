@@ -51,7 +51,7 @@ class GameFragment : BaseFragment(R.layout.fragment_game) {
 
     private fun observeViewModel() {
         viewModel.checkGameOver(args.gameMode.size).observe { checkGameOver ->
-            when (checkGameOver.gameOver) {
+            when (checkGameOver.gameState) {
                 is CheckGameOver.GameState.Initial -> {
                     tvGameMessage.text = if (checkGameOver.turnGame == null) {
                         ibReplay.isClickable = false
@@ -93,7 +93,7 @@ fun BoardGame(size: Int, viewModel: GameViewModel) {
     val ticTacToe by viewModel.getTicTacToe.observeAsState(emptyList())
     val checkGameOver by viewModel.checkGameOver(size).observeAsState()
 
-    when (checkGameOver?.gameOver) {
+    when (checkGameOver?.gameState) {
         is CheckGameOver.GameState.Initial -> {
             Column {
                 Array(size) { IntArray(size) }.forEachIndexed { i, ints ->
