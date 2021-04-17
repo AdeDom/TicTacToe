@@ -1,35 +1,39 @@
 package com.adedom.tictactoe.data.db.dao
 
 import android.content.Context
+import android.os.Build
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.adedom.tictactoe.data.db.AppDatabase
 import com.adedom.tictactoe.data.db.entities.TicTacToeEntity
 import com.google.common.truth.Truth.assertThat
-import junit.framework.TestCase
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.koin.core.context.KoinContextHandler
+import org.robolectric.annotation.Config
 
 @RunWith(AndroidJUnit4::class)
-class TicTacToeDaoTest : TestCase() {
+@Config(sdk = [Build.VERSION_CODES.P])
+class TicTacToeDaoTest {
 
     private lateinit var db: AppDatabase
     private lateinit var dao: TicTacToeDao
 
     @Before
-    public override fun setUp() {
+    fun setUp() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         db = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java).build()
         dao = db.getTicTacToeDao()
     }
 
     @After
-    fun closeDb() {
+    fun cleanup() {
         db.close()
+        KoinContextHandler.stop()
     }
 
     @Test
@@ -79,7 +83,7 @@ class TicTacToeDaoTest : TestCase() {
     }
 
     @Test
-    fun deleteTicTacToe_addEntity_returnIsEmpty()= runBlocking {
+    fun deleteTicTacToe_addEntity_returnIsEmpty() = runBlocking {
         val ticTacToeEntity1 = TicTacToeEntity(1, 1, "X", 123456)
         val ticTacToeEntity2 = TicTacToeEntity(2, 2, "O", 234567)
         dao.saveTicTacToe(ticTacToeEntity1)
