@@ -14,6 +14,9 @@ interface WinnerGameDao {
     suspend fun saveWinnerGame(winnerGameEntity: WinnerGameEntity)
 
     @Query("SELECT * FROM winner_game")
+    suspend fun getWinnerGameList(): List<WinnerGameEntity>
+
+    @Query("SELECT * FROM winner_game")
     fun getWinnerGameFlow(): Flow<List<WinnerGameEntity>>
 
     @Query("DELETE FROM winner_game")

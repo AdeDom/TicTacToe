@@ -13,6 +13,9 @@ interface TicTacToeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveTicTacToe(ticTacToeEntity: TicTacToeEntity)
 
+    @Query("SELECT * FROM tic_tac_toe")
+    suspend fun getTicTacToeList(): List<TicTacToeEntity>
+
     @Query("SELECT turnGame FROM tic_tac_toe ORDER BY timeMillis DESC LIMIT 1")
     suspend fun getTurnGameLast(): String?
 
