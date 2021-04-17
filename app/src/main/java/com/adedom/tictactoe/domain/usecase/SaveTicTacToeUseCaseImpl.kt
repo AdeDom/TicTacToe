@@ -9,14 +9,17 @@ class SaveTicTacToeUseCaseImpl(
 
     override suspend fun invoke(column: Int, row: Int) {
         val turnGameLast = repository.getTurnGameLast() ?: "O"
-        val turnGame = if (turnGameLast == "O") "X" else "O"
         val ticTacToeEntity = TicTacToeEntity(
             column = column,
             row = row,
-            turnGame = turnGame,
+            turnGame = turnGameNow(turnGameLast),
             timeMillis = System.currentTimeMillis(),
         )
         return repository.saveTicTacToe(ticTacToeEntity)
+    }
+
+    override fun turnGameNow(turnGameLast: String): String {
+        return if (turnGameLast == "O") "X" else "O"
     }
 
 }
