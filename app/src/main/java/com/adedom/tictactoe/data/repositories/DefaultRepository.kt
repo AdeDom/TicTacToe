@@ -2,9 +2,12 @@ package com.adedom.tictactoe.data.repositories
 
 import com.adedom.tictactoe.data.db.entities.TicTacToeEntity
 import com.adedom.tictactoe.data.db.entities.WinnerGameEntity
+import com.adedom.tictactoe.data.model.GameMode
 import kotlinx.coroutines.flow.Flow
 
 interface DefaultRepository {
+
+    fun getTicTacToeAllMode():List<GameMode>
 
     suspend fun saveTicTacToe(ticTacToeEntity: TicTacToeEntity)
 

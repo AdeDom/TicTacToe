@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.adedom.tictactoe.R
-import com.adedom.tictactoe.presentation.model.GameMode
+import com.adedom.tictactoe.data.model.GameMode
 import kotlinx.android.synthetic.main.item_main.view.*
 
 class MainAdapter : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {

@@ -5,6 +5,7 @@ import org.koin.dsl.module
 
 val domainModule = module {
 
+    single<GetTicTacToeAllModeUseCase> { GetTicTacToeAllModeUseCaseImpl(get()) }
     single<SaveTicTacToeUseCase> { SaveTicTacToeUseCaseImpl(get()) }
     single<DeleteTicTacToeUseCase> { DeleteTicTacToeUseCaseImpl(get()) }
     single<GetTicTacToeUseCase> { GetTicTacToeUseCaseImpl(get()) }

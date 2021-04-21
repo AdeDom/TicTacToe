@@ -25,6 +25,6 @@
         tools:layout="@layout/fragment_game">
         <argument
             android:name="gameMode"
-            app:argType="com.adedom.tictactoe.presentation.model.GameMode" />
+            app:argType="com.adedom.tictactoe.data.model.GameMode" />
     </fragment>
 </navigation>

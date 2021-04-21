@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.adedom.tictactoe.R
 import com.adedom.tictactoe.base.BaseFragment
-import com.adedom.tictactoe.presentation.model.GameMode
 import kotlinx.android.synthetic.main.fragment_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -41,7 +40,7 @@ class MainFragment : BaseFragment(R.layout.fragment_main) {
             adapter = adt
         }
 
-        mAdapter.submitList(getAllMode())
+        mAdapter.submitList(viewModel.getTicTacToeAllMode)
     }
 
     private fun viewEvent() {
@@ -49,14 +48,6 @@ class MainFragment : BaseFragment(R.layout.fragment_main) {
             val navDirections = MainFragmentDirections.actionMainFragmentToGameFragment(it)
             findNavController().navigate(navDirections)
         }
-    }
-
-    private fun getAllMode(): List<GameMode> {
-        return listOf(
-            GameMode(1, "3 x 3", 3),
-            GameMode(2, "4 x 4", 4),
-            GameMode(3, "5 x 5", 5),
-        )
     }
 
 }
