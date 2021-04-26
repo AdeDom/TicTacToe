@@ -5,7 +5,7 @@ buildscript {
         nav_version = "2.3.4"
         lifecycle_version = "2.3.1"
         koin_version = "2.1.6"
-        compose_version = "1.0.0-beta04"
+        compose_version = "1.0.0-beta05"
     }
     repositories {
         google()
